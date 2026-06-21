@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bitcoin: 10 лет — История цены</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #070710;
+      --surface: #0e0e1c;
+      --surface2: #141428;
+      --border: rgba(255,255,255,0.06);
+      --border-accent: rgba(247,147,26,0.3);
+      --gold: #f7931a;
+      --gold2: #ffb347;
+      --purple: #6366f1;
+      --green: #22c55e;
+      --red: #ef4444;
+      --text: #f1f5f9;
+      --text-muted: #64748b;
+      --text-dim: #94a3b8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── HERO ───────────────────────────────── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% -10%, rgba(247,147,26,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 80% 80%, rgba(99,102,241,0.12) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      margin-bottom: 40px;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .back-link:hover { color: var(--gold); }
+    .back-link svg { width: 16px; height: 16px; fill: currentColor; }
+
+    .btc-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), #e67e00);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin: 0 auto 24px;
+      box-shadow: 0 0 40px rgba(247,147,26,0.4), 0 8px 24px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    h1 .accent { color: var(--gold); }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--text-dim);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      position: relative;
+    }
+
+    /* ── STATS ROW ──────────────────────────── */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 0 24px 64px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 28px;
+      text-align: center;
+      min-width: 140px;
+      flex: 1;
+      max-width: 200px;
+    }
+
+    .stat-value {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .stat-card.green .stat-value { color: var(--green); }
+    .stat-card.red .stat-value { color: var(--red); }
+    .stat-card.gold .stat-value { color: var(--gold); }
+    .stat-card.purple .stat-value { color: var(--purple); }
+
+    /* ── MAIN LAYOUT ────────────────────────── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .section-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    /* ── CHART ──────────────────────────────── */
+    .chart-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px 24px;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chart-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .chart-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .chart-legend {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+
+    .chart-wrap {
+      position: relative;
+      height: 360px;
+    }
+
+    /* ── TIMELINE ───────────────────────────── */
+    .timeline {
+      margin-bottom: 56px;
+    }
+
+    .timeline-grid {
+      display: grid;
+      gap: 0;
+    }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 120px 32px 1fr;
+      gap: 0 16px;
+      align-items: start;
+      position: relative;
+    }
+
+    .tl-date {
+      text-align: right;
+      padding-top: 10px;
+      padding-bottom: 24px;
+    }
+
+    .tl-year {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .tl-range {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .tl-spine {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 0;
+    }
+
+    .tl-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tl-dot.up   { background: rgba(34,197,94,0.15); border: 2px solid rgba(34,197,94,0.5); }
+    .tl-dot.down { background: rgba(239,68,68,0.15);  border: 2px solid rgba(239,68,68,0.5); }
+    .tl-dot.mid  { background: rgba(99,102,241,0.15); border: 2px solid rgba(99,102,241,0.4); }
+
+    .tl-line {
+      flex: 1;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 100%);
+      min-height: 24px;
+      margin-top: 4px;
+    }
+
+    .tl-content {
+      padding-top: 4px;
+      padding-bottom: 24px;
+    }
+
+    .tl-heading {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tl-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 9px;
+      border-radius: 100px;
+    }
+
+    .badge-up   { background: rgba(34,197,94,0.15);  color: var(--green);  border: 1px solid rgba(34,197,94,0.25); }
+    .badge-down { background: rgba(239,68,68,0.15);   color: var(--red);    border: 1px solid rgba(239,68,68,0.25); }
+
+    .tl-body {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.65;
+    }
+
+    .tl-body strong { color: var(--text); font-weight: 600; }
+
+    .tl-prices {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .price-chip {
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    .price-chip.from { background: rgba(255,255,255,0.06); color: var(--text-dim); }
+    .price-chip.to-up   { background: rgba(34,197,94,0.12); color: var(--green); }
+    .price-chip.to-down { background: rgba(239,68,68,0.12); color: var(--red); }
+
+    /* ── CAUSES GRID ────────────────────────── */
+    .causes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+
+    .cause-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+
+    .cause-card:hover { border-color: rgba(247,147,26,0.25); }
+
+    .cause-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .cause-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .cause-body {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* ── PEAKS TABLE ────────────────────────── */
+    .peaks-section { margin-bottom: 56px; }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    thead { background: var(--surface2); }
+
+    th {
+      padding: 14px 18px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+    }
+
+    td {
+      padding: 14px 18px;
+      border-top: 1px solid var(--border);
+      color: var(--text-dim);
+    }
+
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .td-date { font-weight: 600; color: var(--text); }
+    .td-price { font-weight: 700; }
+    .td-price.hi { color: var(--green); }
+    .td-price.lo { color: var(--red); }
+    .td-change.pos { color: var(--green); }
+    .td-change.neg { color: var(--red); }
+
+    /* ── OUTLOOK ────────────────────────────── */
+    .outlook {
+      background: linear-gradient(135deg, rgba(247,147,26,0.08) 0%, rgba(99,102,241,0.08) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: 20px;
+      padding: 36px 32px;
+      margin-bottom: 56px;
+    }
+
+    .outlook h2 { margin-bottom: 16px; }
+
+    .outlook p {
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+
+    .outlook p:last-child { margin-bottom: 0; }
+
+    /* ── FOOTER ─────────────────────────────── */
+    .footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── SCROLL FADE ────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ─────────────────────────── */
+    @media (max-width: 600px) {
+      .tl-item { grid-template-columns: 80px 28px 1fr; }
+      .tl-year { font-size: 13px; }
+      .chart-wrap { height: 260px; }
+      .hero { padding: 60px 16px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <a href="index.html" class="back-link">
+    <svg viewBox="0 0 20 20"><path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"/></svg>
+    Вернуться на визитку
+  </a>
+  <div class="btc-icon">₿</div>
+  <h1>Bitcoin: <span class="accent">10 лет</span><br>истории цены</h1>
+  <p class="hero-sub">
+    Полный анализ движения цены биткоина с 2015 по 2025 год:
+    исторические максимумы, крупнейшие обвалы и ключевые события, которые их вызвали.
+  </p>
+</section>
+
+<!-- ═══════════ STATS ═══════════ -->
+<div class="stats-row fade-in">
+  <div class="stat-card gold">
+    <div class="stat-value">$109 356</div>
+    <div class="stat-label">Исторический максимум</div>
+  </div>
+  <div class="stat-card green">
+    <div class="stat-value">+109 256%</div>
+    <div class="stat-label">Рост за 10 лет</div>
+  </div>
+  <div class="stat-card red">
+    <div class="stat-value">−83%</div>
+    <div class="stat-label">Крупнейший обвал</div>
+  </div>
+  <div class="stat-card purple">
+    <div class="stat-value">4 раза</div>
+    <div class="stat-label">Халвинги за период</div>
+  </div>
+</div>
+
+<!-- ═══════════ CONTAINER ═══════════ -->
+<div class="container">
+
+  <!-- CHART -->
+  <div class="chart-card fade-in">
+    <div class="chart-header">
+      <div>
+        <div class="section-title">График цены Bitcoin (2015–2025)</div>
+        <div class="section-sub">Ключевые уровни и события на шкале времени</div>
+      </div>
+      <div class="chart-legend">
+        <div class="legend-item">
+          <div class="legend-dot" style="background: var(--gold)"></div>
+          Цена BTC/USD
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background: var(--green)"></div>
+          Максимум
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background: var(--red)"></div>
+          Минимум после пика
+        </div>
+      </div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="btcChart"></canvas>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline fade-in">
+    <div class="section-title">Хронология ключевых событий</div>
+    <div class="section-sub">Что стояло за каждым значимым движением цены</div>
+
+    <div class="timeline-grid">
+
+      <!-- 2015 -->
+      <div class="tl-item">
+        <div class="tl-date">
+          <div class="tl-year">2015</div>
+          <div class="tl-range">$160 → $460</div>
+        </div>
+        <div class="tl-spine">
+          <div class="tl-dot mid">📉</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-heading">
+            Дно после краха Mt.Gox
+            <span class="tl-badge badge-up">+188%</span>
+          </div>
+          <div class="tl-body">
+            В начале 2015 года биткоин торговался около <strong>$160</strong> — последствия взлома и банкротства крупнейшей на тот момент биржи Mt.Gox (февраль 2014, утеряно 850 000 BTC). Постепенное восстановление доверия к индустрии, первые регуляторные разъяснения в США и появление новых бирж (Bitfinex, Bitstamp) вернули цену к <strong>$460</strong> к концу года.
+          </div>
+          <div class="tl-prices">
+            <span class="price-chip from">Нач.: ~$160</span>
+            <span class="price-chip to-up">Кон.: ~$460</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2016 -->
+      <div class="tl-item">
+        <div class="tl-date">
+          <div class="tl-year">2016</div>
+          <div class="tl-range">$430 → $960</div>
+        </div>
+        <div class="tl-spine">
+          <div class="tl-dot up">⬆️</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-heading">
+            Первый халвинг нового цикла
+            <span class="tl-badge badge-up">+123%</span>
+          </div>
+          <div class="tl-body">
+            <strong>9 июля 2016</strong> состоялся второй халвинг Bitcoin: вознаграждение майнеров сократилось с 25 до 12,5 BTC. Сокращение эмиссии на фоне растущего интереса корпораций к технологии блокчейн (IBM, Microsoft, R3) и нарастающей инфляции в развивающихся странах (Венесуэла, Зимбабве) толкали цену вверх. К концу года BTC преодолел <strong>$960</strong>.
+          </div>
+          <div class="tl-prices">
+            <span class="price-chip from">Нач.: ~$430</span>
+            <span class="price-chip to-up">Кон.: ~$960</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2017 -->
+      <div class="tl-item">
+        <div class="tl-date">
+          <div class="tl-year">2017</div>
+          <div class="tl-range">$960 → $19 891</div>
+        </div>
+        <div class="tl-spine">
+          <div class="tl-dot up">🚀</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-heading">
+            Бум ICO и розничный ажиотаж
+            <span class="tl-badge badge-up">+1 972%</span>
+          </div>
+          <div class="tl-body">
+            Главный год «крипто-лихорадки». Катализаторы: <strong>ICO-бум</strong> (первичные размещения токенов привлекали сотни миллионов долларов), открытие фьючерсов на BTC на CME и CBOE в декабре, легализация биткоина как платёжного средства в Японии, запуск Coinbase для широкой аудитории. Медиа разгоняли FOMO — тысячи розничных инвесторов скупали BTC. <strong>17 декабря 2017</strong> — исторический максимум на тот момент: <strong>$19 891</strong>.
+          </div>
+          <div class="tl-prices">
+            <span class="price-chip from">Янв.: ~$960</span>
+            <span class="price-chip to-up">Дек.: $19 891</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2018 -->
+      <div class="tl-item">
+        <div class="tl-date">
+          <div class="tl-year">2018</div>
+          <div class="tl-range">$19 891 → $3 200</div>
+        </div>
+        <div class="tl-spine">
+          <div class="tl-dot down">💣</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-heading">
+            «Крипто-зима» — обвал на 84%
+            <span class="tl-badge badge-down">−84%</span>
+          </div>
+          <div class="tl-body">
+            После пика конца 2017 года рынок рухнул. Причины: регуляторные удары — <strong>Китай полностью запретил торговлю криптовалютами</strong>, SEC начала расследования ICO, Южная Корея ввела жёсткие ограничения. Параллельно выяснилось, что большинство ICO-проектов — пустышки. Взлом Coincheck ($530 млн) добавил паники. К декабрю 2018 BTC упал до <strong>$3 200</strong> — потеря 84% за год.
+          </div>
+          <div class="tl-prices">
+            <span class="price-chip from">Янв.: $19 891</span>
+            <span class="price-chip to-down">Дек.: ~$3 200</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2019 -->
+      <div class="tl-item">
+        <div class="tl-date">
+          <div class="tl-year">2019</div>
+          <div class="tl-range">$3 200 → $13 800</div>
+        </div>
+        <div class="tl-spine">
+          <div class="tl-dot up">📈</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-heading">
+            Восстановление и объявление Libra от Facebook
+            <span class="tl-badge badge-up">+331%</span>
+          </div>
+          <div class="tl-body">
+            2019 год начался с медленного подъёма. Резкий рост в июне — июле спровоцировало <strong>объявление Facebook о выпуске криптовалюты Libra</strong>: мировая аудитория осознала потенциал цифровых денег. BTC достиг <strong>$13 800</strong> в июне, затем скорректировался до ~$7 000 к концу года на фоне критики Libra регуляторами и ужесточения требований FATF к криптобиржам.
+          </div>
+          <div class="tl-prices">
+            <span class="price-chip from">Янв.: ~$3 200</span>
+            <span class="price-chip to-up">Июнь: ~$13 800</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2020 -->
+      <div class="tl-item">
+        <div class="tl-date">
+          <div class="tl-year">2020</div>
+          <div class="tl-range">$7 200 → $29 300</div>
+        </div>
+        <div class="tl-spine">
+          <div class="tl-dot up">🌊</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-heading">
+            COVID-обвал → институциональный разворот
+            <span class="tl-badge badge-up">+307%</span>
+          </div>
+          <div class="tl-body">
+            <strong>12 марта 2020 («Чёрный четверг»)</strong>: пандемия обрушила все активы, BTC упал с $8 000 до <strong>$3 800</strong> за сутки — крупнейший однодневный обвал в истории (-50%). Но ФРС и другие ЦБ запустили масштабную печать денег, породив страх инфляции. <strong>MicroStrategy</strong> купила $250 млн в биткоинах в августе — первая публичная компания со стратегическим резервом BTC. Третий халвинг (11 мая 2020, 6,25 BTC) сократил предложение. К декабрю BTC вышел на новые ATH — <strong>$29 300</strong>.
+          </div>
+          <div class="tl-prices">
+            <span class="price-chip from">Мар.: ~$3 800</span>
+            <span class="price-chip to-up">Дек.: ~$29 300</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2021 Bull -->
+      <div class="tl-item">
+        <div class="tl-date">
+          <div class="tl-year">2021</div>
+          <div class="tl-range">апр: $64 800</div>
+        </div>
+        <div class="tl-spine">
+          <div class="tl-dot up">🏆</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-heading">
+            Институциональный бум — $64 800
+            <span class="tl-badge badge-up">+121% от января</span>
+          </div>
+          <div class="tl-body">
+            Начало 2021: Tesla инвестировала <strong>$1,5 млрд</strong> в BTC и начала принимать его как оплату. <strong>IPO Coinbase</strong> на Nasdaq ($86 млрд оценки) 14 апреля стало символом легитимности индустрии. Выход BTC на $64 800 совпал с листингом Coinbase. Параллельно — бум NFT и DeFi-протоколов (Uniswap, Aave). Однако 19 мая Китай запретил майнинг биткоина — цена рухнула с $58 000 до $30 000 за неделю.
+          </div>
+          <div class="tl-prices">
+            <span class="price-chip from">Янв.: ~$29 000</span>
+            <span class="price-chip to-up">Апр.: $64 800</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2021 Nov ATH -->
+      <div class="tl-item">
+        <div class="tl-date">
+          <div class="tl-year">2021</div>
+          <div class="tl-range">нояб: $69 000</div>
+        </div>
+        <div class="tl-spine">
+          <div class="tl-dot up">⭐</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-heading">
+            Абсолютный максимум эпохи — $69 044
+            <span class="tl-badge badge-up">ATH 2021</span>
+          </div>
+          <div class="tl-body">
+            После летней коррекции рынок восстановился. Ключевые события: запуск <strong>первого ETF на биткоин-фьючерсы</strong> (ProShares BITO, октябрь 2021), принятие Bitcoin <strong>законным платёжным средством в Сальвадоре</strong> (сентябрь), продолжение покупок институционалов. <strong>10 ноября 2021</strong> BTC достиг исторического максимума <strong>$69 044</strong>. Суммарная капитализация крипторынка превысила $3 трлн.
+          </div>
+          <div class="tl-prices">
+            <span class="price-chip from">Июль: ~$30 000</span>
+            <span class="price-chip to-up">Нояб.: $69 044</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2022 crash -->
+      <div class="tl-item">
+        <div class="tl-date">
+          <div class="tl-year">2022</div>
+          <div class="tl-range">$69K → $15 500</div>
+        </div>
+        <div class="tl-spine">
+          <div class="tl-dot down">☠️</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-heading">
+            Катастрофа Terra/Luna и крах FTX
+            <span class="tl-badge badge-down">−77%</span>
+          </div>
+          <div class="tl-body">
+            <strong>Май 2022 — крах Terra/Luna:</strong> алгоритмический стейблкоин UST потерял привязку, экосистема Terra на $40 млрд обнулилась за 72 часа, утянув весь рынок. BTC упал с $38 000 до $17 600. <strong>Июнь:</strong> банкротство крипто-кредитора Celsius Network, ликвидация Three Arrows Capital (3AC) — крупнейшего крипто-хедж-фонда. <strong>Ноябрь — FTX Collapse:</strong> биржа Сэма Бэнкмана-Фрида (SBF) c активами $32 млрд обанкротилась за 10 дней после утечки о растрате клиентских средств. BTC рухнул до <strong>$15 500</strong>.
+          </div>
+          <div class="tl-prices">
+            <span class="price-chip from">Янв.: ~$47 000</span>
+            <span class="price-chip to-down">Нояб.: ~$15 500</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2023 -->
+      <div class="tl-item">
+        <div class="tl-date">
+          <div class="tl-year">2023</div>
+          <div class="tl-range">$16K → $44K</div>
+        </div>
+        <div class="tl-spine">
+          <div class="tl-dot up">🌱</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-heading">
+            Восстановление: Blackrock и ETF-ожидания
+            <span class="tl-badge badge-up">+175%</span>
+          </div>
+          <div class="tl-body">
+            Несмотря на банкротство Silvergate и Silicon Valley Bank в марте (мини-кризис в банках, дружественных крипто), BTC уверенно рос. Главный катализатор — <strong>BlackRock подал заявку на спот-ETF</strong> на биткоин (июнь 2023). Крупнейший в мире управляющий активами ($10 трлн AUM) дал рынку сигнал: институциональные деньги идут. К концу года BTC торговался у <strong>$44 000</strong>.
+          </div>
+          <div class="tl-prices">
+            <span class="price-chip from">Янв.: ~$16 000</span>
+            <span class="price-chip to-up">Дек.: ~$44 000</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2024 -->
+      <div class="tl-item">
+        <div class="tl-date">
+          <div class="tl-year">2024</div>
+          <div class="tl-range">$44K → $109K</div>
+        </div>
+        <div class="tl-spine">
+          <div class="tl-dot up">💎</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-heading">
+            Спот-ETF + Халвинг + «Трамп-ралли»
+            <span class="tl-badge badge-up">+148%</span>
+          </div>
+          <div class="tl-body">
+            <strong>10–11 января 2024</strong> — SEC одобрила сразу 11 спот-ETF на биткоин (BlackRock IBIT, Fidelity FBTC и др.). За первую неделю в них влился $4,6 млрд. <strong>20 апреля — четвёртый халвинг</strong> (3,125 BTC): предложение сократилось вдвое. В марте BTC обновил ATH, пробив $73 000. После победы Дональда Трампа на выборах в ноябре (криптофильская платформа) рынок взлетел: биткоин пробил <strong>$100 000</strong> впервые в истории и достиг максимума <strong>$109 356</strong> в январе 2025.
+          </div>
+          <div class="tl-prices">
+            <span class="price-chip from">Янв.: ~$44 000</span>
+            <span class="price-chip to-up">Нояб.–Янв.25: $109 356</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CAUSES -->
+  <div class="fade-in">
+    <div class="section-title">Главные движущие силы цены</div>
+    <div class="section-sub">Факторы, которые исторически определяли взлёты и падения BTC</div>
+    <div class="causes-grid">
+
+      <div class="cause-card">
+        <div class="cause-icon">✂️</div>
+        <div class="cause-title">Халвинги Bitcoin</div>
+        <div class="cause-body">Каждые ~4 года вознаграждение майнеров сокращается вдвое. Все четыре халвинга (2012, 2016, 2020, 2024) исторически предшествовали крупным бычьим циклам — через 12–18 месяцев после события.</div>
+      </div>
+
+      <div class="cause-card">
+        <div class="cause-icon">🏦</div>
+        <div class="cause-title">Институциональное принятие</div>
+        <div class="cause-body">Вход MicroStrategy, Tesla, BlackRock, Fidelity создаёт постоянный спрос и легитимность. Одобрение спот-ETF в январе 2024 привлекло $10+ млрд институциональных денег за месяц.</div>
+      </div>
+
+      <div class="cause-card">
+        <div class="cause-icon">🏛️</div>
+        <div class="cause-title">Регуляторные решения</div>
+        <div class="cause-body">Запреты Китая (2017, 2021, 2022) обрушивали рынок. Одобрение ETF и признание в Японии и Сальвадоре — подталкивали вверх. Позиция SEC США определяла настроения всей индустрии.</div>
+      </div>
+
+      <div class="cause-card">
+        <div class="cause-icon">💸</div>
+        <div class="cause-title">Монетарная политика</div>
+        <div class="cause-body">QE и нулевые ставки ФРС 2020–2021 гнали деньги в рисковые активы. Ужесточение (2022–2023) ударило по BTC как по «рисковому активу». В 2024–2025 снижение ставок снова поддержало рост.</div>
+      </div>
+
+      <div class="cause-card">
+        <div class="cause-icon">💥</div>
+        <div class="cause-title">Краши и взломы</div>
+        <div class="cause-body">Mt.Gox (2014), Bitfinex (2016), Coincheck (2018), Terra/Luna (2022), FTX (2022) — каждый крупный скандал обрушивал рынок на 30–80%. Доверие восстанавливалось медленно.</div>
+      </div>
+
+      <div class="cause-card">
+        <div class="cause-icon">📱</div>
+        <div class="cause-title">Розничный ажиотаж (FOMO)</div>
+        <div class="cause-body">Пики 2017 и 2021 были во многом раздуты розничными инвесторами через Coinbase, Robinhood, Telegram. Запросы «купить биткоин» в Google исторически совпадали с локальными максимумами.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="peaks-section fade-in">
+    <div class="section-title">Ключевые ценовые уровни 2015–2025</div>
+    <div class="section-sub">Все исторически значимые максимумы и дна</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Дата</th>
+            <th>Цена BTC</th>
+            <th>Событие</th>
+            <th>Изм. от пред. уровня</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-date">Янв. 2015</td>
+            <td class="td-price lo">$160</td>
+            <td>Дно после краха Mt.Gox</td>
+            <td class="td-change neg">−87% от ATH 2013</td>
+          </tr>
+          <tr>
+            <td class="td-date">Июль 2016</td>
+            <td class="td-price">$650</td>
+            <td>Халвинг II</td>
+            <td class="td-change pos">+306% от дна 2015</td>
+          </tr>
+          <tr>
+            <td class="td-date">Дек. 2017</td>
+            <td class="td-price hi">$19 891</td>
+            <td>Пик ICO-бума</td>
+            <td class="td-change pos">+2 960% от 2016</td>
+          </tr>
+          <tr>
+            <td class="td-date">Дек. 2018</td>
+            <td class="td-price lo">$3 200</td>
+            <td>Дно крипто-зимы</td>
+            <td class="td-change neg">−84% от ATH 2017</td>
+          </tr>
+          <tr>
+            <td class="td-date">Июнь 2019</td>
+            <td class="td-price hi">$13 800</td>
+            <td>Объявление Libra Facebook</td>
+            <td class="td-change pos">+331% от дна</td>
+          </tr>
+          <tr>
+            <td class="td-date">Март 2020</td>
+            <td class="td-price lo">$3 850</td>
+            <td>«Чёрный четверг» — COVID</td>
+            <td class="td-change neg">−50% за сутки</td>
+          </tr>
+          <tr>
+            <td class="td-date">Апр. 2021</td>
+            <td class="td-price hi">$64 800</td>
+            <td>IPO Coinbase + Tesla</td>
+            <td class="td-change pos">+1 583% от дна 2020</td>
+          </tr>
+          <tr>
+            <td class="td-date">Нояб. 2021</td>
+            <td class="td-price hi">$69 044</td>
+            <td>ATH — биткоин-ETF (фьючерсы)</td>
+            <td class="td-change pos">+129% за год</td>
+          </tr>
+          <tr>
+            <td class="td-date">Нояб. 2022</td>
+            <td class="td-price lo">$15 500</td>
+            <td>Крах FTX + Terra/Luna</td>
+            <td class="td-change neg">−77% от ATH 2021</td>
+          </tr>
+          <tr>
+            <td class="td-date">Дек. 2023</td>
+            <td class="td-price">$44 000</td>
+            <td>Заявка BlackRock на спот-ETF</td>
+            <td class="td-change pos">+184% от дна</td>
+          </tr>
+          <tr>
+            <td class="td-date">Март 2024</td>
+            <td class="td-price hi">$73 000</td>
+            <td>Спот-ETF одобрены; пре-халвинг ATH</td>
+            <td class="td-change pos">+66% от дек. 2023</td>
+          </tr>
+          <tr>
+            <td class="td-date">Янв. 2025</td>
+            <td class="td-price hi">$109 356</td>
+            <td>Новый ATH: «Трамп-ралли» + ETF</td>
+            <td class="td-change pos">+50% от март 2024</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- OUTLOOK -->
+  <div class="outlook fade-in">
+    <h2 class="section-title">Выводы и перспективы</h2>
+    <p>
+      За 10 лет Bitcoin прошёл путь от малоизвестного протокола (цена $160) до глобального финансового актива с капитализацией свыше $2 трлн. Каждый цикл сопровождался одной и той же структурой: <strong>халвинг → институциональный катализатор → розничный ажиотаж → ATH → коррекция на 70–84% → новое дно выше предыдущего</strong>.
+    </p>
+    <p>
+      Ключевой вывод: ни один медвежий рынок не опустил BTC ниже предыдущего исторического максимума. Дно 2022 ($15 500) оказалось выше дна 2018 ($3 200), которое было выше дна 2015 ($160). Это структурный восходящий тренд.
+    </p>
+    <p>
+      Вперёд смотрят три фактора: <strong>1)</strong> Приток денег через спот-ETF (ежедневно $500–900 млн в пиковые дни); <strong>2)</strong> Халвинг 2028 сократит эмиссию до 1,5625 BTC/блок; <strong>3)</strong> Нарастающее использование BTC как резервного актива государствами и корпорациями. Исторически сочетание этих факторов указывает на продолжение долгосрочного восходящего цикла.
+    </p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  Отчёт подготовлен на основе публичных исторических данных.
+  Не является инвестиционной рекомендацией. &nbsp;·&nbsp;
+  <a href="index.html">← Вернуться на визитку</a>
+</footer>
+
+<script>
+/* ─── DATA ─────────────────────────────────────── */
+const labels = [
+  '2015-01','2015-07','2016-01','2016-07','2017-01','2017-07',
+  '2017-12','2018-06','2018-12','2019-06','2019-12','2020-03',
+  '2020-07','2020-12','2021-04','2021-07','2021-11','2022-01',
+  '2022-06','2022-11','2023-01','2023-06','2023-12','2024-01',
+  '2024-03','2024-07','2024-11','2025-01'
+];
+
+const prices = [
+  160, 280, 430, 650, 960, 2500,
+  19891, 6000, 3200, 13800, 7200, 3850,
+  9200, 29300, 64800, 32000, 69044, 47000,
+  20000, 15500, 16800, 30000, 44000, 46000,
+  73000, 57000, 98000, 109356
+];
+
+const labelMap = {
+  '2015-01': 'Дно Mt.Gox',
+  '2016-07': 'Халвинг II',
+  '2017-12': 'ATH 2017\n$19 891',
+  '2018-12': 'Дно 2018\n$3 200',
+  '2019-06': 'Libra\n$13 800',
+  '2020-03': 'COVID\n$3 850',
+  '2021-11': 'ATH 2021\n$69 044',
+  '2022-11': 'FTX крах\n$15 500',
+  '2024-01': 'Спот-ETF',
+  '2025-01': 'ATH 2025\n$109 356',
+};
+
+/* ─── CHART ─────────────────────────────────────── */
+const ctx = document.getElementById('btcChart').getContext('2d');
+
+const gradient = ctx.createLinearGradient(0, 0, 0, 360);
+gradient.addColorStop(0, 'rgba(247,147,26,0.35)');
+gradient.addColorStop(0.5, 'rgba(247,147,26,0.08)');
+gradient.addColorStop(1, 'rgba(247,147,26,0)');
+
+const annotations = {};
+Object.entries(labelMap).forEach(([date, text], i) => {
+  const idx = labels.indexOf(date);
+  if (idx === -1) return;
+  const isHigh = prices[idx] > (prices[idx - 1] || 0);
+  annotations['ann' + i] = {
+    type: 'point',
+    xValue: date,
+    yValue: prices[idx],
+    radius: 5,
+    backgroundColor: isHigh ? '#22c55e' : '#ef4444',
+    borderColor: '#fff',
+    borderWidth: 1.5,
+  };
+});
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [{
+      label: 'BTC/USD',
+      data: prices,
+      borderColor: '#f7931a',
+      borderWidth: 2.5,
+      pointRadius: 0,
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: '#f7931a',
+      fill: true,
+      backgroundColor: gradient,
+      tension: 0.35,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1a1a2e',
+        borderColor: 'rgba(247,147,26,0.4)',
+        borderWidth: 1,
+        titleColor: '#94a3b8',
+        bodyColor: '#f7931a',
+        bodyFont: { size: 15, weight: '700' },
+        padding: 12,
+        callbacks: {
+          label: ctx => ' $' + ctx.parsed.y.toLocaleString('en-US'),
+        }
+      },
+      annotation: { annotations }
+    },
+    scales: {
+      x: {
+        grid: { color: 'rgba(255,255,255,0.04)', drawBorder: false },
+        ticks: {
+          color: '#4b5563',
+          font: { size: 11 },
+          maxRotation: 0,
+          autoSkip: true,
+          maxTicksLimit: 8,
+        }
+      },
+      y: {
+        type: 'logarithmic',
+        grid: { color: 'rgba(255,255,255,0.04)', drawBorder: false },
+        ticks: {
+          color: '#4b5563',
+          font: { size: 11 },
+          callback: v => {
+            if ([100, 1000, 5000, 10000, 50000, 100000].includes(v))
+              return '$' + v.toLocaleString('en-US');
+            return null;
+          }
+        }
+      }
+    }
+  }
+});
+
+/* ─── SCROLL ANIMATION ─────────────────────────── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
