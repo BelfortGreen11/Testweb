@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex Devlin — Full-Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav__logo">
+      <span class="nav__logo-bracket">&lt;</span>
+      <span class="nav__logo-name">AD</span>
+      <span class="nav__logo-bracket">/&gt;</span>
+    </div>
+    <ul class="nav__links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero__bg">
+      <canvas id="particles"></canvas>
+    </div>
+    <div class="hero__content">
+      <div class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        Available for hire
+      </div>
+      <h1 class="hero__title">
+        Hi, I'm <span class="gradient-text">Alex Devlin</span>
+      </h1>
+      <div class="hero__subtitle">
+        <span class="hero__subtitle-static">I build</span>
+        <span class="hero__typewriter" id="typewriter"></span>
+        <span class="hero__cursor">_</span>
+      </div>
+      <p class="hero__desc">
+        Full-stack developer crafting performant web applications with
+        clean code and modern technologies.
+      </p>
+      <div class="hero__actions">
+        <a href="#projects" class="btn btn--primary">
+          View Projects
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>
+        </a>
+        <a href="#contact" class="btn btn--outline">Get in Touch</a>
+      </div>
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <span class="hero__stat-num">5+</span>
+          <span class="hero__stat-label">Years Exp.</span>
+        </div>
+        <div class="hero__stat-divider"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-num">40+</span>
+          <span class="hero__stat-label">Projects Done</span>
+        </div>
+        <div class="hero__stat-divider"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-num">20+</span>
+          <span class="hero__stat-label">Happy Clients</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero__scroll-hint">
+      <div class="hero__scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section-label">// about me</div>
+      <h2 class="section-title">Who am I?</h2>
+      <div class="about__grid">
+        <div class="about__avatar-wrap">
+          <div class="about__avatar">
+            <div class="about__avatar-inner">
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
+                <circle cx="100" cy="75" r="40" fill="url(#avatarGrad)"/>
+                <ellipse cx="100" cy="165" rx="65" ry="40" fill="url(#avatarGrad)"/>
+                <defs>
+                  <linearGradient id="avatarGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#6c63ff"/>
+                    <stop offset="100%" stop-color="#00e5ff"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="about__avatar-ring"></div>
+            <div class="about__avatar-glow"></div>
+          </div>
+          <div class="about__code-badge">
+            <pre><code><span class="token-keyword">const</span> <span class="token-var">dev</span> = {
+  <span class="token-prop">name</span>: <span class="token-str">"Alex"</span>,
+  <span class="token-prop">role</span>: <span class="token-str">"Full-Stack"</span>,
+  <span class="token-prop">coffee</span>: <span class="token-bool">true</span>,
+  <span class="token-prop">available</span>: <span class="token-bool">true</span>
+}</code></pre>
+          </div>
+        </div>
+        <div class="about__text">
+          <p>
+            I'm a <strong>full-stack developer</strong> with a passion for building
+            beautiful, fast, and accessible web experiences. I specialize in
+            modern JavaScript ecosystems, from React on the frontend to Node.js
+            on the backend.
+          </p>
+          <p>
+            I value clean architecture, thoughtful UX, and code that's a joy
+            to maintain. When I'm not coding, I'm contributing to open source
+            or exploring the latest web performance techniques.
+          </p>
+          <div class="about__pills">
+            <span class="pill">Problem Solver</span>
+            <span class="pill">Open Source</span>
+            <span class="pill">Clean Code</span>
+            <span class="pill">Team Player</span>
+            <span class="pill">Remote-First</span>
+          </div>
+          <a href="#" class="btn btn--primary about__cv-btn" download>
+            Download CV
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z"/><path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="skills section" id="skills">
+    <div class="container">
+      <div class="section-label">// tech stack</div>
+      <h2 class="section-title">What I work with</h2>
+      <div class="skills__grid">
+
+        <div class="skill-card">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V7.5L14.5 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 13L8 15L10 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 13L16 15L14 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Frontend</h3>
+          <div class="skill-card__tags">
+            <span>React</span><span>TypeScript</span><span>Next.js</span>
+            <span>Tailwind CSS</span><span>Vite</span>
+          </div>
+          <div class="skill-card__bar">
+            <div class="skill-card__bar-fill" data-width="92"></div>
+          </div>
+          <span class="skill-card__pct">92%</span>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Backend</h3>
+          <div class="skill-card__tags">
+            <span>Node.js</span><span>Express</span><span>PostgreSQL</span>
+            <span>Redis</span><span>GraphQL</span>
+          </div>
+          <div class="skill-card__bar">
+            <div class="skill-card__bar-fill" data-width="85"></div>
+          </div>
+          <span class="skill-card__pct">85%</span>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 21H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 17V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>DevOps & Cloud</h3>
+          <div class="skill-card__tags">
+            <span>Docker</span><span>AWS</span><span>GitHub Actions</span>
+            <span>Nginx</span><span>Terraform</span>
+          </div>
+          <div class="skill-card__bar">
+            <div class="skill-card__bar-fill" data-width="78"></div>
+          </div>
+          <span class="skill-card__pct">78%</span>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Tools & Other</h3>
+          <div class="skill-card__tags">
+            <span>Git</span><span>Figma</span><span>Jest</span>
+            <span>Storybook</span><span>Zod</span>
+          </div>
+          <div class="skill-card__bar">
+            <div class="skill-card__bar-fill" data-width="88"></div>
+          </div>
+          <span class="skill-card__pct">88%</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <div class="section-label">// featured work</div>
+      <h2 class="section-title">Projects</h2>
+      <div class="projects__grid">
+
+        <article class="project-card project-card--featured">
+          <div class="project-card__img">
+            <div class="project-card__mock">
+              <div class="mock-bar"><span></span><span></span><span></span></div>
+              <div class="mock-content mock-content--1"></div>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__tag">Featured</div>
+            <h3>CloudSync Dashboard</h3>
+            <p>Real-time file sync platform with team collaboration features, end-to-end encryption, and cross-platform support.</p>
+            <div class="project-card__tech">
+              <span>React</span><span>Node.js</span><span>WebSockets</span><span>AWS S3</span>
+            </div>
+            <div class="project-card__links">
+              <a href="#" class="project-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                Code
+              </a>
+              <a href="#" class="project-link project-link--primary">
+                Live Demo
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card__img">
+            <div class="project-card__mock">
+              <div class="mock-bar"><span></span><span></span><span></span></div>
+              <div class="mock-content mock-content--2"></div>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <h3>DevBoard</h3>
+            <p>Kanban-style project tracker built for developer teams with GitHub integration and sprint analytics.</p>
+            <div class="project-card__tech">
+              <span>Next.js</span><span>Prisma</span><span>PostgreSQL</span>
+            </div>
+            <div class="project-card__links">
+              <a href="#" class="project-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                Code
+              </a>
+              <a href="#" class="project-link project-link--primary">Live Demo <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card__img">
+            <div class="project-card__mock">
+              <div class="mock-bar"><span></span><span></span><span></span></div>
+              <div class="mock-content mock-content--3"></div>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <h3>API Forge</h3>
+            <p>Visual REST API builder and testing tool — like Postman, but fully open-source and self-hosted.</p>
+            <div class="project-card__tech">
+              <span>TypeScript</span><span>Electron</span><span>SQLite</span>
+            </div>
+            <div class="project-card__links">
+              <a href="#" class="project-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                Code
+              </a>
+              <a href="#" class="project-link project-link--primary">Live Demo <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-label">// get in touch</div>
+      <h2 class="section-title">Let's work together</h2>
+      <div class="contact__grid">
+        <div class="contact__info">
+          <p>Have a project in mind or want to discuss an opportunity? I'd love to hear from you. Drop me a message and I'll get back to you within 24 hours.</p>
+          <ul class="contact__list">
+            <li>
+              <div class="contact__icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <span>Email</span>
+                <a href="mailto:alex@devlin.dev">alex@devlin.dev</a>
+              </div>
+            </li>
+            <li>
+              <div class="contact__icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </div>
+              <div>
+                <span>GitHub</span>
+                <a href="#">/alexdevlin</a>
+              </div>
+            </li>
+            <li>
+              <div class="contact__icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </div>
+              <div>
+                <span>LinkedIn</span>
+                <a href="#">/in/alexdevlin</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <form class="contact__form" id="contactForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="john@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">
+            Send Message
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M3.105 2.289a.75.75 0 00-.826.95l1.414 4.925A1.5 1.5 0 005.135 9.25h6.115a.75.75 0 010 1.5H5.135a1.5 1.5 0 00-1.442 1.086l-1.414 4.926a.75.75 0 00.826.95 28.896 28.896 0 0015.293-7.154.75.75 0 000-1.115A28.897 28.897 0 003.105 2.289z"/></svg>
+          </button>
+          <div class="form-success" id="formSuccess">
+            Message sent! I'll reply soon.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__logo">
+          <span class="nav__logo-bracket">&lt;</span>
+          <span class="nav__logo-name">AD</span>
+          <span class="nav__logo-bracket">/&gt;</span>
+        </div>
+        <p class="footer__copy">
+          Designed & built by Alex Devlin &mdash; <span id="year"></span>
+        </p>
+        <div class="footer__socials">
+          <a href="#" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
