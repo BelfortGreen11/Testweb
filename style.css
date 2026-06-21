@@ -785,6 +785,83 @@ body {
 }
 .form-success.visible { display: block; }
 
+/* ─── BTC Banner ───────────────────────────────────────── */
+.btc-banner {
+  background: var(--bg-1);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 48px 0;
+}
+.btc-banner__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  background: linear-gradient(135deg, rgba(247,147,26,0.06) 0%, rgba(108,99,255,0.06) 100%);
+  border: 1px solid rgba(247,147,26,0.2);
+  border-radius: var(--radius-xl);
+  padding: 32px 40px;
+  flex-wrap: wrap;
+}
+.btc-banner__left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.btc-banner__icon {
+  flex-shrink: 0;
+  width: 60px; height: 60px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(247,147,26,0.1);
+  border-radius: 14px;
+  border: 1px solid rgba(247,147,26,0.25);
+}
+.btc-banner__label {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: #F7931A;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+.btc-banner__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.btc-banner__desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  max-width: 460px;
+  line-height: 1.55;
+}
+.btn--btc {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition);
+  border: none;
+  background: linear-gradient(135deg, #F7931A, #e07b10);
+  color: #fff;
+  box-shadow: 0 0 24px rgba(247,147,26,0.3);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.btn--btc svg { width: 18px; height: 18px; transition: transform 0.2s; }
+.btn--btc:hover { box-shadow: 0 0 36px rgba(247,147,26,0.5); transform: translateY(-2px); }
+.btn--btc:hover svg { transform: translateX(3px); }
+
+@media (max-width: 640px) {
+  .btc-banner__inner { padding: 24px 20px; }
+  .btc-banner__inner { flex-direction: column; align-items: flex-start; }
+}
+
 /* ─── Footer ───────────────────────────────────────────── */
 .footer {
   background: var(--bg-1);
