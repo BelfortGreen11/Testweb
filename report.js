@@ -16,19 +16,18 @@ Chart.defaults.font.family = "'JetBrains Mono', monospace";
 Chart.defaults.font.size = 11;
 
 // ── Monthly price data (Jan 2015 – Jun 2025) ─────────────
-// Approximate monthly close prices
 const labels = [
-  'Jan 15','Apr 15','Jul 15','Oct 15',
-  'Jan 16','Apr 16','Jul 16','Oct 16',
-  'Jan 17','Apr 17','Jul 17','Oct 17','Dec 17',
-  'Feb 18','Jun 18','Sep 18','Dec 18',
-  'Mar 19','Jun 19','Sep 19','Dec 19',
-  'Mar 20','Jun 20','Sep 20','Dec 20',
-  'Feb 21','Apr 21','Jul 21','Oct 21','Nov 21',
-  'Jan 22','May 22','Jul 22','Nov 22','Dec 22',
-  'Mar 23','Jun 23','Oct 23','Dec 23',
-  'Jan 24','Mar 24','Apr 24','Jun 24','Sep 24','Nov 24','Dec 24',
-  'Jan 25','Mar 25','Jun 25',
+  'янв. 15','апр. 15','июл. 15','окт. 15',
+  'янв. 16','апр. 16','июл. 16','окт. 16',
+  'янв. 17','апр. 17','июл. 17','окт. 17','дек. 17',
+  'фев. 18','июн. 18','сен. 18','дек. 18',
+  'мар. 19','июн. 19','сен. 19','дек. 19',
+  'мар. 20','июн. 20','сен. 20','дек. 20',
+  'фев. 21','апр. 21','июл. 21','окт. 21','ноя. 21',
+  'янв. 22','май 22','июл. 22','ноя. 22','дек. 22',
+  'мар. 23','июн. 23','окт. 23','дек. 23',
+  'янв. 24','мар. 24','апр. 24','июн. 24','сен. 24','ноя. 24','дек. 24',
+  'янв. 25','мар. 25','июн. 25',
 ];
 
 const prices = [
@@ -47,12 +46,12 @@ const prices = [
 
 // Key event annotations (index into labels array)
 const events = [
-  { idx: 12, label: 'ATH 2017\n$19 783', color: GREEN },
-  { idx: 17, label: 'COVID Low\n$3 850',  color: RED },
-  { idx: 29, label: 'ATH 2021\n$68 789', color: GREEN },
-  { idx: 33, label: 'FTX Crash\n$16k',   color: RED },
-  { idx: 41, label: 'Spot ETF', color: PURPLE },
-  { idx: 48, label: 'New ATH\n$107k',    color: GREEN },
+  { idx: 12, label: 'ATH 2017\n$19 783',  color: GREEN },
+  { idx: 17, label: 'COVID дно\n$3 850',   color: RED },
+  { idx: 29, label: 'ATH 2021\n$68 789',  color: GREEN },
+  { idx: 33, label: 'Крах FTX\n$16k',     color: RED },
+  { idx: 41, label: 'Спот ETF',            color: PURPLE },
+  { idx: 48, label: 'Новый ATH\n$107k',   color: GREEN },
 ];
 
 // ── Main price chart ──────────────────────────────────────
@@ -98,20 +97,8 @@ new Chart(priceCtx, {
         titleColor: '#F7931A',
         bodyColor: '#e8e8f0',
         callbacks: {
-          label: ctx => ' $' + ctx.raw.toLocaleString(),
+          label: ctx => ' $' + ctx.raw.toLocaleString('ru-RU'),
         },
-      },
-      annotation: {
-        annotations: Object.fromEntries(
-          events.map((ev, i) => [`ev${i}`, {
-            type: 'point',
-            xValue: labels[ev.idx],
-            yValue: prices[ev.idx],
-            backgroundColor: ev.color,
-            radius: 6,
-            borderWidth: 0,
-          }])
-        ),
       },
     },
     scales: {
@@ -133,7 +120,7 @@ new Chart(priceCtx, {
 // ── Drawdown chart ────────────────────────────────────────
 const ddCtx = document.getElementById('drawdownChart').getContext('2d');
 
-const cycles   = ['2013 Cycle\n(Dec 2013)', '2017 Cycle\n(Dec 2017)', '2021 Cycle\n(Nov 2021)', '2022 Low\n(Nov 2022)'];
+const cycles    = ['2013 цикл\n(дек. 2013)', '2017 цикл\n(дек. 2017)', '2021 цикл\n(ноябрь 2021)', '2022 дно\n(ноябрь 2022)'];
 const drawdowns = [-87, -84, -77, -77];
 const ddColors  = drawdowns.map(v => v <= -80 ? RED : 'rgba(255,77,77,0.7)');
 
@@ -142,7 +129,7 @@ new Chart(ddCtx, {
   data: {
     labels: cycles,
     datasets: [{
-      label: 'Drawdown from ATH (%)',
+      label: 'Просадка от ATH (%)',
       data: drawdowns,
       backgroundColor: ddColors,
       borderColor: RED,
@@ -177,7 +164,7 @@ new Chart(ddCtx, {
 // ── Return comparison chart ───────────────────────────────
 const retCtx = document.getElementById('returnChart').getContext('2d');
 
-const assets = ['Bitcoin (BTC)', 'S&P 500', 'Gold', 'US Bonds', 'Cash (CPI)'];
+const assets  = ['Биткоин (BTC)', 'S&P 500', 'Золото', 'Облигации США', 'Наличные (инфляция)'];
 const returns = [32300, 340, 85, 30, -28];
 const retColors = returns.map(r =>
   r > 1000 ? BTC :
@@ -190,7 +177,7 @@ new Chart(retCtx, {
   data: {
     labels: assets,
     datasets: [{
-      label: 'Total Return % (2015 → 2025)',
+      label: 'Общая доходность % (2015 → 2025)',
       data: returns,
       backgroundColor: retColors,
       borderColor: retColors.map(c => c.replace('0.7', '1')),
@@ -209,9 +196,9 @@ new Chart(retCtx, {
         borderColor: BTC_LT,
         borderWidth: 1,
         callbacks: {
-          label: ctx => ' ' + ctx.raw.toLocaleString() + '%',
+          label: ctx => ' ' + ctx.raw.toLocaleString('ru-RU') + '%',
           afterLabel: ctx => ctx.raw > 0
-            ? ' $1k → $' + ((1000 * (1 + ctx.raw / 100)).toLocaleString(undefined, {maximumFractionDigits: 0}))
+            ? ' $1 000 → $' + ((1000 * (1 + ctx.raw / 100)).toLocaleString('ru-RU', {maximumFractionDigits: 0}))
             : '',
         },
       },
@@ -219,7 +206,7 @@ new Chart(retCtx, {
     scales: {
       x: {
         grid: { color: GRID },
-        ticks: { callback: v => v.toLocaleString() + '%' },
+        ticks: { callback: v => v.toLocaleString('ru-RU') + '%' },
       },
       y: { grid: { display: false } },
     },
