@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bitcoin: 10 Years of Price History</title>
+  <title>Bitcoin: 10 лет истории цены</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -16,14 +16,14 @@
   <nav class="topbar">
     <a href="index.html" class="back-btn">
       <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clip-rule="evenodd"/></svg>
-      Back to Portfolio
+      Назад к портфолио
     </a>
     <div class="topbar__logo">
       <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="16" cy="16" r="16" fill="#F7931A"/>
         <path d="M22.5 13.8c.3-2.1-1.3-3.2-3.5-3.9l.7-2.9-1.8-.4-.7 2.8-.9-.2.7-2.8-1.8-.4-.7 2.9-.7-.2-2.5-.6-.5 1.9s1.3.3 1.3.3c.7.2.9.6.8 1l-.8 3.3v.1c.1 0 .1.1.1.1l-3.2 8.4c-.1.2-.4.5-.9.4 0 0-1.3-.3-1.3-.3l-.9 2.1 2.4.6.9.2-.7 2.9 1.8.4.7-2.9.9.2-.7 2.9 1.8.4.7-2.9c3 .6 5.2.3 6.1-2.3.8-2.1 0-3.3-1.5-4.1 1.1-.3 1.9-1 2.1-2.6zm-3.7 5.2c-.5 2.1-4.2 1-5.4.7l1-3.8c1.2.3 5.1.9 4.4 3.1zm.6-5.2c-.5 1.9-3.6 1-4.6.7l.9-3.5c1 .3 4.3.7 3.7 2.8z" fill="white"/>
       </svg>
-      BTC Report 2015–2025
+      Отчёт BTC 2015–2025
     </div>
   </nav>
 
@@ -38,39 +38,39 @@
       <div class="report-hero__content">
         <div class="report-hero__eyebrow">
           <span class="dot dot--orange"></span>
-          Deep-Dive Report &nbsp;·&nbsp; 2015 – 2025
+          Углублённый отчёт &nbsp;·&nbsp; 2015 – 2025
         </div>
         <h1 class="report-hero__title">
-          Bitcoin Price<br />
-          <span class="btc-gradient">10-Year Chronicle</span>
+          История цены Bitcoin<br />
+          <span class="btc-gradient">Хроника 10 лет</span>
         </h1>
         <p class="report-hero__sub">
-          From a $300 niche asset to a $100 000 macro instrument —
-          the crashes, manias and turning points that shaped the world's
-          most volatile financial instrument.
+          От нишевого актива за $300 до макроинструмента за $100 000 —
+          обвалы, мании и переломные точки, которые сформировали самый волатильный
+          финансовый инструмент в мире.
         </p>
         <div class="kpi-row" id="kpiRow">
           <div class="kpi">
             <span class="kpi__val" id="kpiStart">$320</span>
-            <span class="kpi__label">Jan 2015 Price</span>
+            <span class="kpi__label">Цена янв. 2015</span>
           </div>
           <div class="kpi__arrow">→</div>
           <div class="kpi">
             <span class="kpi__val kpi__val--green" id="kpiEnd">$103 600</span>
-            <span class="kpi__label">Peak 2025</span>
+            <span class="kpi__label">Пик 2025</span>
           </div>
           <div class="kpi__divider"></div>
           <div class="kpi">
             <span class="kpi__val kpi__val--orange">+32 300%</span>
-            <span class="kpi__label">Total Return</span>
+            <span class="kpi__label">Общая доходность</span>
           </div>
           <div class="kpi">
             <span class="kpi__val">4</span>
-            <span class="kpi__label">Halvings</span>
+            <span class="kpi__label">Халвинга</span>
           </div>
           <div class="kpi">
             <span class="kpi__val kpi__val--red">−87%</span>
-            <span class="kpi__label">Worst Drawdown</span>
+            <span class="kpi__label">Макс. просадка</span>
           </div>
         </div>
       </div>
@@ -82,17 +82,17 @@
     <!-- ── Main chart ─────────────────────────────────── -->
     <section class="card chart-card reveal">
       <div class="card__header">
-        <h2>Price Chart <span class="mono">USD / BTC</span></h2>
+        <h2>График цены <span class="mono">USD / BTC</span></h2>
         <div class="chart-legend">
-          <span class="legend-dot legend-dot--price"></span> Price
-          <span class="legend-dot legend-dot--event ml"></span> Key Event
+          <span class="legend-dot legend-dot--price"></span> Цена
+          <span class="legend-dot legend-dot--event ml"></span> Событие
         </div>
       </div>
       <div class="chart-wrap">
         <canvas id="priceChart"></canvas>
       </div>
       <p class="chart-caption">
-        Logarithmic scale · Monthly closes · 2015 – Jun 2025
+        Логарифмическая шкала · Месячные закрытия · 2015 – июнь 2025
       </p>
     </section>
 
@@ -101,30 +101,30 @@
       <div class="stat-card stat-card--up">
         <div class="stat-card__icon">↑</div>
         <div class="stat-card__num">$69 000</div>
-        <div class="stat-card__label">All-Time High (Nov 2021)</div>
+        <div class="stat-card__label">Исторический максимум (ноябрь 2021)</div>
       </div>
       <div class="stat-card stat-card--down">
         <div class="stat-card__icon">↓</div>
         <div class="stat-card__num">$3 200</div>
-        <div class="stat-card__label">2018 Bear-Market Low</div>
+        <div class="stat-card__label">Минимум медвежьего рынка 2018</div>
       </div>
       <div class="stat-card">
         <div class="stat-card__icon">⛏</div>
         <div class="stat-card__num">4×</div>
-        <div class="stat-card__label">Reward Halvings Occurred</div>
+        <div class="stat-card__label">Халвингов вознаграждения</div>
       </div>
       <div class="stat-card">
         <div class="stat-card__icon">📅</div>
-        <div class="stat-card__num">~4 yr</div>
-        <div class="stat-card__label">Average Bull Cycle Length</div>
+        <div class="stat-card__num">~4 г.</div>
+        <div class="stat-card__label">Средняя длина бычьего цикла</div>
       </div>
     </section>
 
     <!-- ── Cycle chart ────────────────────────────────── -->
     <section class="card chart-card reveal">
       <div class="card__header">
-        <h2>Cycle Drawdowns from ATH</h2>
-        <span class="badge badge--red">Max Pain</span>
+        <h2>Просадки циклов от ATH</h2>
+        <span class="badge badge--red">Максимальная боль</span>
       </div>
       <div class="chart-wrap chart-wrap--sm">
         <canvas id="drawdownChart"></canvas>
@@ -133,15 +133,15 @@
 
     <!-- ── Timeline ───────────────────────────────────── -->
     <section class="reveal">
-      <h2 class="section-title">Major Events Timeline</h2>
+      <h2 class="section-title">Хронология ключевых событий</h2>
       <div class="timeline">
 
         <div class="tl-item tl-item--up">
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <div class="tl-meta"><span class="tl-date">2015</span><span class="tl-badge tl-badge--neutral">Recovery</span></div>
-            <h3>Bear-Market Bottom & Accumulation</h3>
-            <p>After the 2013 Mt. Gox hack wiped 850 000 BTC and trust in exchanges, Bitcoin spent 2015 grinding near <strong>$200–400</strong>. Long-term believers accumulated quietly. The Bitcoin Core dev community grew, laying technical foundations for the years ahead.</p>
+            <div class="tl-meta"><span class="tl-date">2015</span><span class="tl-badge tl-badge--neutral">Восстановление</span></div>
+            <h3>Дно медвежьего рынка и накопление</h3>
+            <p>После взлома Mt. Gox в 2013 году, унёсшего 850 000 BTC, и краха доверия к биржам, Bitcoin провёл 2015 год в консолидации вблизи <strong>$200–400</strong>. Долгосрочные инвесторы тихо накапливали монеты. Сообщество разработчиков Bitcoin Core росло, закладывая технический фундамент для будущего роста.</p>
             <div class="tl-price">
               <span class="price-from">$170</span>
               <svg viewBox="0 0 24 8"><path d="M0 4h20M16 1l4 3-4 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
@@ -153,9 +153,9 @@
         <div class="tl-item tl-item--up">
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <div class="tl-meta"><span class="tl-date">Jul 2016</span><span class="tl-badge tl-badge--up">Halving #2</span></div>
-            <h3>Second Block-Reward Halving</h3>
-            <p>The mining reward cut from 25 → 12.5 BTC per block. Historically, halvings reduce supply growth and precede major bull markets by 12–18 months. Institutional interest in blockchain began attracting venture capital to the space for the first time.</p>
+            <div class="tl-meta"><span class="tl-date">июль 2016</span><span class="tl-badge tl-badge--up">Халвинг #2</span></div>
+            <h3>Второй халвинг блокового вознаграждения</h3>
+            <p>Вознаграждение за майнинг сокращается с 25 до 12,5 BTC за блок. Исторически халвинги снижают темп роста предложения и предшествуют крупным бычьим рынкам через 12–18 месяцев. Институциональный интерес к блокчейну впервые привлёк венчурный капитал в отрасль.</p>
             <div class="tl-price">
               <span class="price-from">$650</span>
               <svg viewBox="0 0 24 8"><path d="M0 4h20M16 1l4 3-4 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
@@ -167,11 +167,11 @@
         <div class="tl-item tl-item--up">
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <div class="tl-meta"><span class="tl-date">2017</span><span class="tl-badge tl-badge--up">Bull Run</span></div>
-            <h3>ICO Mania — First Mainstream Bubble</h3>
-            <p>Ethereum's smart contracts enabled Initial Coin Offerings (ICOs) — anyone could raise millions in hours. Bitcoin rode the euphoria from <strong>$1 000</strong> in January to <strong>$19 783</strong> in December. CNBC, Reddit, and kitchen-table conversations drove retail FOMO to historic extremes. Google searches for "buy bitcoin" peaked globally.</p>
+            <div class="tl-meta"><span class="tl-date">2017</span><span class="tl-badge tl-badge--up">Бычий рынок</span></div>
+            <h3>Мания ICO — первый массовый пузырь</h3>
+            <p>Смарт-контракты Ethereum позволили проводить Initial Coin Offerings (ICO) — любой мог собрать миллионы за несколько часов. Bitcoin взлетел с <strong>$1 000</strong> в январе до <strong>$19 783</strong> в декабре. CNBC, Reddit и разговоры за кухонным столом подстегнули розничное FOMO до исторических крайностей. Google-запросы «купить биткоин» достигли глобального пика.</p>
             <div class="tl-factors">
-              <span>ICO Boom</span><span>Retail FOMO</span><span>SegWit Activation</span><span>Japan Legalises BTC</span>
+              <span>Бум ICO</span><span>FOMO розничных инвесторов</span><span>Активация SegWit</span><span>Япония легализует BTC</span>
             </div>
             <div class="tl-price">
               <span class="price-from">$1 000</span>
@@ -185,10 +185,10 @@
           <div class="tl-dot"></div>
           <div class="tl-card">
             <div class="tl-meta"><span class="tl-date">2018</span><span class="tl-badge tl-badge--down">−84%</span></div>
-            <h3>Crypto Winter — ICO Collapse</h3>
-            <p>Regulators worldwide cracked down on unregistered securities (ICOs). Most altcoin projects delivered nothing. The Bitcoin futures market launched on CME allowed institutional short-selling. BTC fell from $19 k to a low of <strong>$3 200</strong> by December — an 84% drawdown that wiped out millions of late retail investors.</p>
+            <h3>Крипtozима — крах ICO</h3>
+            <p>Регуляторы по всему миру ужесточили контроль над незарегистрированными ценными бумагами (ICO). Большинство альткоин-проектов не выполнили обещаний. Запуск фьючерсов на Bitcoin на CME дал институциональным игрокам возможность открывать шорты. BTC упал с $19 000 до минимума в <strong>$3 200</strong> к декабрю — просадка на 84%, уничтожившая вложения миллионов розничных инвесторов.</p>
             <div class="tl-factors">
-              <span>SEC vs ICOs</span><span>Exchange Hacks</span><span>CME Futures Shorts</span><span>Market Overextension</span>
+              <span>SEC против ICO</span><span>Взломы бирж</span><span>Шорты на CME</span><span>Перегрев рынка</span>
             </div>
             <div class="tl-price">
               <span class="price-from">$17 000</span>
@@ -201,11 +201,11 @@
         <div class="tl-item tl-item--up">
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <div class="tl-meta"><span class="tl-date">2019–2020</span><span class="tl-badge tl-badge--neutral">Recovery</span></div>
-            <h3>Libra Shock & COVID Flash Crash</h3>
-            <p>Facebook's Libra announcement pushed BTC to <strong>$13 800</strong> — the biggest single catalyst since 2017. Then COVID-19 in March 2020 caused a global risk-off panic: BTC crashed 52% in a single day to <strong>$3 850</strong>, testing the resolve of hodlers. The Fed's historic money-printing response set the stage for Bitcoin's next supercycle.</p>
+            <div class="tl-meta"><span class="tl-date">2019–2020</span><span class="tl-badge tl-badge--neutral">Восстановление</span></div>
+            <h3>Шок от Libra и COVID-крах</h3>
+            <p>Объявление Facebook о Libra подтолкнуло BTC к <strong>$13 800</strong> — крупнейший разовый катализатор с 2017 года. Затем в марте 2020-го COVID-19 вызвал глобальный уход от риска: BTC рухнул на 52% за один день до <strong>$3 850</strong>, испытав стойкость держателей. Ответ ФРС — историческое количественное смягчение — стал почвой для нового суперцикла Bitcoin.</p>
             <div class="tl-factors">
-              <span>Facebook Libra</span><span>COVID Crash</span><span>QE Fears</span>
+              <span>Facebook Libra</span><span>COVID-крах</span><span>Страхи перед QE</span>
             </div>
             <div class="tl-price">
               <span class="price-from">$3 850</span>
@@ -218,11 +218,11 @@
         <div class="tl-item tl-item--up">
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <div class="tl-meta"><span class="tl-date">May 2020</span><span class="tl-badge tl-badge--up">Halving #3</span></div>
-            <h3>Third Halving — Institutional Supercycle</h3>
-            <p>Reward halved to 6.25 BTC. This cycle was different: <strong>MicroStrategy</strong> put $425M of corporate treasury into BTC, <strong>Tesla</strong> bought $1.5B, <strong>PayPal</strong> enabled 300M users to buy Bitcoin, and Grayscale accumulated billions. For the first time, Wall Street and corporate America treated BTC as a legitimate inflation hedge.</p>
+            <div class="tl-meta"><span class="tl-date">май 2020</span><span class="tl-badge tl-badge--up">Халвинг #3</span></div>
+            <h3>Третий халвинг — институциональный суперцикл</h3>
+            <p>Вознаграждение сократилось до 6,25 BTC. Этот цикл был иным: <strong>MicroStrategy</strong> вложила $425 млн корпоративной казны в BTC, <strong>Tesla</strong> купила на $1,5 млрд, <strong>PayPal</strong> открыла покупку Bitcoin 300 млн пользователей, а Grayscale накопила миллиарды. Впервые Уолл-стрит и корпоративная Америка восприняли BTC как законный инфляционный хедж.</p>
             <div class="tl-factors">
-              <span>MicroStrategy</span><span>Tesla</span><span>PayPal</span><span>DeFi Boom</span><span>Grayscale GBTC</span>
+              <span>MicroStrategy</span><span>Tesla</span><span>PayPal</span><span>Бум DeFi</span><span>Grayscale GBTC</span>
             </div>
             <div class="tl-price">
               <span class="price-from">$8 600</span>
@@ -235,11 +235,11 @@
         <div class="tl-item tl-item--down">
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <div class="tl-meta"><span class="tl-date">May 2021</span><span class="tl-badge tl-badge--down">−53%</span></div>
-            <h3>China Mining Ban & Elon Twitter Effect</h3>
-            <p>Elon Musk reversed Tesla's BTC payment acceptance, citing energy concerns. China's government banned Bitcoin mining — forcing ~65% of the global hashrate to relocate overnight. BTC crashed from $64 k to <strong>$29 000</strong>. Yet the network survived and hashrate recovered fully within months, proving decentralisation's resilience.</p>
+            <div class="tl-meta"><span class="tl-date">май 2021</span><span class="tl-badge tl-badge--down">−53%</span></div>
+            <h3>Запрет майнинга в Китае и «эффект Илона»</h3>
+            <p>Илон Маск отменил приём оплаты Tesla в BTC, сославшись на экологические проблемы. Правительство Китая запретило майнинг Bitcoin — это вынудило ~65% мирового хешрейта перебазироваться за одну ночь. BTC упал с $64 000 до <strong>$29 000</strong>. Однако сеть устояла, а хешрейт восстановился за несколько месяцев, подтвердив устойчивость децентрализации.</p>
             <div class="tl-factors">
-              <span>Elon Musk Tweets</span><span>China Mining Ban</span><span>Energy FUD</span><span>Leverage Liquidations</span>
+              <span>Твиты Илона Маска</span><span>Запрет майнинга в Китае</span><span>FUD по энергетике</span><span>Ликвидации с плечом</span>
             </div>
             <div class="tl-price">
               <span class="price-from">$64 000</span>
@@ -252,11 +252,11 @@
         <div class="tl-item tl-item--up">
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <div class="tl-meta"><span class="tl-date">Nov 2021</span><span class="tl-badge tl-badge--up">ATH</span></div>
-            <h3>All-Time High: $68 789</h3>
-            <p>Bitcoin hit its then-record high, fuelled by the <strong>ProShares Bitcoin Futures ETF</strong> launch (first US Bitcoin ETF), El Salvador adopting BTC as legal tender, and continued institutional treasury buying. The total crypto market cap briefly exceeded $3 trillion.</p>
+            <div class="tl-meta"><span class="tl-date">ноябрь 2021</span><span class="tl-badge tl-badge--up">ATH</span></div>
+            <h3>Исторический максимум: $68 789</h3>
+            <p>Bitcoin достиг своего тогдашнего рекорда на фоне запуска <strong>фьючерсного ETF ProShares Bitcoin</strong> (первый Bitcoin ETF в США), принятия BTC законным платёжным средством в Сальвадоре и продолжения институциональных покупок. Совокупная капитализация крипторынка кратко превысила $3 трлн.</p>
             <div class="tl-factors">
-              <span>Futures ETF</span><span>El Salvador</span><span>NFT Boom</span><span>Metaverse Hype</span>
+              <span>Фьючерсный ETF</span><span>Сальвадор</span><span>Бум NFT</span><span>Хайп метавселенной</span>
             </div>
             <div class="tl-price">
               <span class="price-from">$31 000</span>
@@ -270,10 +270,10 @@
           <div class="tl-dot"></div>
           <div class="tl-card">
             <div class="tl-meta"><span class="tl-date">2022</span><span class="tl-badge tl-badge--down">−77%</span></div>
-            <h3>LUNA/UST Collapse & FTX Bankruptcy</h3>
-            <p>Two catastrophic black-swan events defined 2022. In May, the <strong>Terra/LUNA ecosystem imploded</strong> — a $60B algorithmic stablecoin project collapsed to zero in 72 hours, wiping out retail and institutional investors. In November, <strong>FTX</strong> — the world's second-largest exchange — filed bankruptcy amid a $8B fraud, triggering a contagion that crashed BTC to <strong>$15 700</strong>. Industry credibility hit a historic low.</p>
+            <h3>Крах LUNA/UST и банкротство FTX</h3>
+            <p>Два катастрофических события-«чёрных лебедя» определили 2022 год. В мае <strong>экосистема Terra/LUNA</strong> рухнула — алгоритмический стейблкоин на $60 млрд обнулился за 72 часа, уничтожив вложения розничных и институциональных инвесторов. В ноябре <strong>FTX</strong> — вторая по величине биржа мира — объявила банкротство из-за мошенничества на $8 млрд, спровоцировав цепную реакцию, обвалившую BTC до <strong>$15 700</strong>. Репутация отрасли достигла исторического минимума.</p>
             <div class="tl-factors">
-              <span>LUNA/UST Collapse</span><span>FTX Fraud</span><span>Fed Rate Hikes</span><span>3AC Bankruptcy</span><span>Celsius Collapse</span>
+              <span>Крах LUNA/UST</span><span>Мошенничество FTX</span><span>Повышение ставок ФРС</span><span>Банкротство 3AC</span><span>Крах Celsius</span>
             </div>
             <div class="tl-price">
               <span class="price-from">$47 000</span>
@@ -286,11 +286,11 @@
         <div class="tl-item tl-item--up">
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <div class="tl-meta"><span class="tl-date">Jan 2024</span><span class="tl-badge tl-badge--up">ETF Approved</span></div>
-            <h3>Spot Bitcoin ETF — Wall Street Goes All-In</h3>
-            <p>After a decade of rejections, the SEC approved 11 <strong>spot Bitcoin ETFs</strong> simultaneously, including BlackRock's iShares Bitcoin Trust. On day one, trading volume exceeded $4.6B — the largest ETF launch in history. Within 3 months, these ETFs accumulated over 500 000 BTC ($35B+), dwarfing any previous institutional accumulation event.</p>
+            <div class="tl-meta"><span class="tl-date">январь 2024</span><span class="tl-badge tl-badge--up">ETF одобрен</span></div>
+            <h3>Спотовый Bitcoin ETF — Уолл-стрит ставит всё</h3>
+            <p>После десяти лет отказов SEC одновременно одобрила 11 <strong>спотовых Bitcoin ETF</strong>, включая iShares Bitcoin Trust от BlackRock. В первый день торгов объём превысил $4,6 млрд — крупнейший запуск ETF в истории. За три месяца фонды накопили свыше 500 000 BTC ($35+ млрд), затмив любое предшествующее институциональное накопление.</p>
             <div class="tl-factors">
-              <span>Spot ETF Approval</span><span>BlackRock IBIT</span><span>Fidelity FBTC</span><span>Record Inflows</span>
+              <span>Одобрение спот ETF</span><span>BlackRock IBIT</span><span>Fidelity FBTC</span><span>Рекордный приток средств</span>
             </div>
             <div class="tl-price">
               <span class="price-from">$42 000</span>
@@ -303,11 +303,11 @@
         <div class="tl-item tl-item--up">
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <div class="tl-meta"><span class="tl-date">Apr 2024</span><span class="tl-badge tl-badge--up">Halving #4</span></div>
-            <h3>Fourth Halving — Reward Drops to 3.125 BTC</h3>
-            <p>The fourth halving cut the block reward to 3.125 BTC. For the first time, a halving occurred <em>after</em> a new all-time high had already been set — traditionally ATHs came after halvings. The combination of ETF demand and supply reduction created unprecedented buy-side pressure.</p>
+            <div class="tl-meta"><span class="tl-date">апрель 2024</span><span class="tl-badge tl-badge--up">Халвинг #4</span></div>
+            <h3>Четвёртый халвинг — вознаграждение падает до 3,125 BTC</h3>
+            <p>Четвёртый халвинг сократил блоковое вознаграждение до 3,125 BTC. Впервые халвинг произошёл <em>после</em> того, как уже был установлен новый исторический максимум — традиционно ATH устанавливались после халвингов. Совокупление спроса со стороны ETF и сокращения предложения создало беспрецедентное давление покупателей.</p>
             <div class="tl-factors">
-              <span>Supply Shock</span><span>ETF Demand</span><span>Ordinals / Runes</span>
+              <span>Шок предложения</span><span>Спрос ETF</span><span>Ordinals / Runes</span>
             </div>
             <div class="tl-price">
               <span class="price-from">$60 000</span>
@@ -323,37 +323,37 @@
     <!-- ── Return comparison ──────────────────────────── -->
     <section class="card reveal">
       <div class="card__header">
-        <h2>$1 000 Invested in 2015 vs. Traditional Assets</h2>
-        <span class="badge badge--orange">Hypothetical Returns</span>
+        <h2>$1 000, вложенные в 2015, против традиционных активов</h2>
+        <span class="badge badge--orange">Гипотетическая доходность</span>
       </div>
       <div class="chart-wrap chart-wrap--sm">
         <canvas id="returnChart"></canvas>
       </div>
-      <p class="chart-caption">Assumes buy &amp; hold from Jan 2015, no compounding, no fees. Past returns do not predict future results.</p>
+      <p class="chart-caption">При покупке и удержании с января 2015 г., без реинвестирования и комиссий. Прошлая доходность не гарантирует будущих результатов.</p>
     </section>
 
     <!-- ── Halving table ──────────────────────────────── -->
     <section class="card reveal">
       <div class="card__header">
-        <h2>Halving Cycle Summary</h2>
+        <h2>Сводка по циклам халвингов</h2>
       </div>
       <div class="table-wrap">
         <table class="data-table">
           <thead>
             <tr>
               <th>#</th>
-              <th>Date</th>
-              <th>Block Reward</th>
-              <th>Price at Halving</th>
-              <th>Cycle ATH</th>
-              <th>Gain to ATH</th>
-              <th>Max Drawdown</th>
+              <th>Дата</th>
+              <th>Вознаграждение</th>
+              <th>Цена при халвинге</th>
+              <th>ATH цикла</th>
+              <th>Рост до ATH</th>
+              <th>Макс. просадка</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><span class="mono">1</span></td>
-              <td>Nov 2012</td>
+              <td>ноябрь 2012</td>
               <td>25 BTC</td>
               <td>$12</td>
               <td>$1 163</td>
@@ -362,8 +362,8 @@
             </tr>
             <tr>
               <td><span class="mono">2</span></td>
-              <td>Jul 2016</td>
-              <td>12.5 BTC</td>
+              <td>июль 2016</td>
+              <td>12,5 BTC</td>
               <td>$650</td>
               <td>$19 783</td>
               <td class="up">+2 943%</td>
@@ -371,8 +371,8 @@
             </tr>
             <tr>
               <td><span class="mono">3</span></td>
-              <td>May 2020</td>
-              <td>6.25 BTC</td>
+              <td>май 2020</td>
+              <td>6,25 BTC</td>
               <td>$8 600</td>
               <td>$68 789</td>
               <td class="up">+700%</td>
@@ -380,12 +380,12 @@
             </tr>
             <tr class="highlight-row">
               <td><span class="mono">4</span></td>
-              <td>Apr 2024</td>
-              <td>3.125 BTC</td>
+              <td>апрель 2024</td>
+              <td>3,125 BTC</td>
               <td>$63 800</td>
               <td>$103 600+</td>
               <td class="up">+62%+</td>
-              <td class="down">ongoing</td>
+              <td class="down">продолжается</td>
             </tr>
           </tbody>
         </table>
@@ -394,27 +394,27 @@
 
     <!-- ── Key takeaways ─────────────────────────────── -->
     <section class="takeaways reveal">
-      <h2 class="section-title">Key Takeaways</h2>
+      <h2 class="section-title">Ключевые выводы</h2>
       <div class="takeaways__grid">
         <div class="takeaway-card takeaway-card--1">
           <div class="takeaway-card__num">01</div>
-          <h3>Halvings Are the Metronome</h3>
-          <p>Every ~4 years, supply growth halves. Each post-halving cycle has produced a new ATH, though with diminishing percentage returns as market cap grows.</p>
+          <h3>Халвинги — метроном рынка</h3>
+          <p>Каждые ~4 года рост предложения сокращается вдвое. Каждый постхалвинговый цикл заканчивался новым ATH, хотя процентная доходность снижается по мере роста рыночной капитализации.</p>
         </div>
         <div class="takeaway-card takeaway-card--2">
           <div class="takeaway-card__num">02</div>
-          <h3>Fear Kills More Portfolios Than Crashes</h3>
-          <p>Investors who panic-sold at every 50%+ drawdown locked in losses. Those who held through all four cycles turned $1 000 into $323 000+ — a 32 300% return.</p>
+          <h3>Страх губит больше портфелей, чем обвалы</h3>
+          <p>Инвесторы, продававшие в панике при каждой просадке свыше 50%, фиксировали убытки. Те, кто держал через все четыре цикла, превратили $1 000 в $323 000+ — доходность 32 300%.</p>
         </div>
         <div class="takeaway-card takeaway-card--3">
           <div class="takeaway-card__num">03</div>
-          <h3>Each Cycle Has a Unique Catalyst</h3>
-          <p>2013: geeks & libertarians. 2017: ICO speculation. 2020–21: institutional adoption. 2024: ETF legitimisation. Narratives evolve, but supply scarcity is constant.</p>
+          <h3>У каждого цикла — свой катализатор</h3>
+          <p>2013: гики и либертарианцы. 2017: ICO-спекуляции. 2020–21: институциональное принятие. 2024: легитимизация через ETF. Нарративы меняются, дефицит предложения — нет.</p>
         </div>
         <div class="takeaway-card takeaway-card--4">
           <div class="takeaway-card__num">04</div>
-          <h3>Macro Conditions Matter More Now</h3>
-          <p>With $35B+ in ETF AUM and corporate treasuries holding BTC, Bitcoin now correlates more with risk assets during crises — but diverges during liquidity expansions.</p>
+          <h3>Макроэкономика важна как никогда</h3>
+          <p>При $35+ млрд в AUM ETF и BTC на балансах корпораций Bitcoin теперь коррелирует с рисковыми активами в кризис — но расходится с ними в периоды расширения ликвидности.</p>
         </div>
       </div>
     </section>
@@ -423,7 +423,7 @@
 
   <footer class="report-footer">
     <div class="container">
-      <p>Data is approximate / illustrative. Not financial advice. &nbsp;·&nbsp; Built by <a href="index.html">Alex Devlin</a> &nbsp;·&nbsp; <span id="year"></span></p>
+      <p>Данные приблизительны и носят иллюстративный характер. Не является финансовым советом. &nbsp;·&nbsp; Сделано <a href="index.html">Alex Devlin</a> &nbsp;·&nbsp; <span id="year"></span></p>
     </div>
   </footer>
 
