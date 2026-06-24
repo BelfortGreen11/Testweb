@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Локатор ребёнка через iPhone — Полная инструкция</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="guide.css" />
+</head>
+<body>
+
+  <!-- Topbar -->
+  <nav class="topbar">
+    <a href="index.html" class="back-btn">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clip-rule="evenodd"/></svg>
+      Назад к портфолио
+    </a>
+    <div class="topbar__badge">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+      iOS Геолокация
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="guide-hero">
+    <div class="guide-hero__bg">
+      <div class="guide-hero__blobs">
+        <div class="blob blob--1"></div>
+        <div class="blob blob--2"></div>
+        <div class="blob blob--3"></div>
+      </div>
+      <div class="guide-hero__dots"></div>
+    </div>
+    <div class="container">
+      <div class="guide-hero__content">
+        <div class="guide-hero__pill">
+          <span class="status-dot"></span>
+          Работает без технических знаний
+        </div>
+        <h1 class="guide-hero__title">
+          Как всегда знать,<br/>
+          <span class="apple-gradient">где находится ребёнок</span>
+        </h1>
+        <p class="guide-hero__sub">
+          Полная пошаговая инструкция настройки через «Локатор» (Find My) на iPhone.
+          Настраивается один раз — работает постоянно, без повторных действий.
+        </p>
+        <div class="hero-chips">
+          <div class="chip">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Apple iPhone
+          </div>
+          <div class="chip">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+            Family Sharing
+          </div>
+          <div class="chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            ~5 минут
+          </div>
+        </div>
+      </div>
+
+      <!-- iPhone mockup -->
+      <div class="guide-hero__phone">
+        <div class="iphone">
+          <div class="iphone__notch"></div>
+          <div class="iphone__screen">
+            <div class="iphone__map">
+              <div class="map-grid"></div>
+              <div class="map-road map-road--h"></div>
+              <div class="map-road map-road--v"></div>
+              <div class="map-road map-road--h2"></div>
+              <div class="map-pin">
+                <div class="map-pin__pulse"></div>
+                <div class="map-pin__dot"></div>
+              </div>
+              <div class="map-card">
+                <div class="map-card__avatar">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+                </div>
+                <div>
+                  <div class="map-card__name">Анна</div>
+                  <div class="map-card__loc">📍 Школа №14 · 2 мин назад</div>
+                </div>
+              </div>
+            </div>
+            <div class="iphone__tab-bar">
+              <div class="tab active">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                <span>Люди</span>
+              </div>
+              <div class="tab">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+                <span>Устройства</span>
+              </div>
+              <div class="tab">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                <span>Меня</span>
+              </div>
+            </div>
+          </div>
+          <div class="iphone__home-bar"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="guide-main">
+    <div class="container">
+
+      <!-- Prerequisites -->
+      <div class="prereq-card reveal">
+        <div class="prereq-card__icon">✅</div>
+        <div>
+          <h3>Что нужно для начала</h3>
+          <ul>
+            <li><strong>iPhone у ребёнка</strong> (iOS 13 и новее)</li>
+            <li><strong>Ваш iPhone, iPad или Mac</strong> (либо браузер на ПК)</li>
+            <li><strong>Apple ID у ребёнка</strong> — если нет, создадим по ходу инструкции</li>
+            <li>Оба устройства подключены к интернету (Wi-Fi или мобильный)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Steps -->
+      <h2 class="steps-title reveal">Пошаговая настройка</h2>
+
+      <!-- Step 1 -->
+      <div class="step-block reveal" id="step1">
+        <div class="step-header">
+          <div class="step-num">1</div>
+          <div>
+            <div class="step-label">Шаг первый</div>
+            <h3 class="step-title">Создать или проверить Apple ID ребёнка</h3>
+          </div>
+        </div>
+        <div class="step-body">
+          <div class="step-text">
+            <p>Каждый участник семейной группы должен иметь свой Apple ID. Для детей до 13 лет Apple позволяет создать <strong>специальный детский аккаунт</strong>, которым можно управлять из вашего аккаунта.</p>
+            <div class="info-box info-box--blue">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+              Если у ребёнка уже есть Apple ID — переходите к шагу 2.
+            </div>
+            <div class="path-steps">
+              <div class="path-step">
+                <div class="path-step__icon">⚙️</div>
+                <div><strong>Настройки</strong> на вашем iPhone</div>
+              </div>
+              <div class="path-arrow">↓</div>
+              <div class="path-step">
+                <div class="path-step__icon">👤</div>
+                <div>Нажмите на ваше <strong>имя / Apple ID</strong> вверху</div>
+              </div>
+              <div class="path-arrow">↓</div>
+              <div class="path-step">
+                <div class="path-step__icon">👨‍👩‍👧</div>
+                <div><strong>Семейный доступ → Добавить члена семьи</strong></div>
+              </div>
+              <div class="path-arrow">↓</div>
+              <div class="path-step">
+                <div class="path-step__icon">🧒</div>
+                <div>Выберите <strong>«Создать учётную запись для ребёнка»</strong></div>
+              </div>
+              <div class="path-arrow">↓</div>
+              <div class="path-step">
+                <div class="path-step__icon">📋</div>
+                <div>Следуйте инструкции на экране (дата рождения, имя, пароль)</div>
+              </div>
+            </div>
+          </div>
+          <div class="step-visual">
+            <div class="ios-screen">
+              <div class="ios-screen__bar">
+                <span class="ios-back">‹ Настройки</span>
+                <span class="ios-title">Семейный доступ</span>
+              </div>
+              <div class="ios-section">
+                <div class="ios-row ios-row--header">ВАША СЕМЬЯ</div>
+                <div class="ios-row">
+                  <div class="ios-avatar ios-avatar--you">Вы</div>
+                  <div class="ios-row-text">
+                    <div class="ios-row-title">Вы (организатор)</div>
+                    <div class="ios-row-sub">Взрослый</div>
+                  </div>
+                </div>
+                <div class="ios-row ios-row--add">
+                  <div class="ios-plus">+</div>
+                  <div class="ios-row-text">
+                    <div class="ios-row-title" style="color:#007AFF">Добавить члена семьи</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-block reveal" id="step2">
+        <div class="step-header">
+          <div class="step-num">2</div>
+          <div>
+            <div class="step-label">Шаг второй</div>
+            <h3 class="step-title">Включить «Поделиться геопозицией»</h3>
+          </div>
+        </div>
+        <div class="step-body">
+          <div class="step-text">
+            <p>Теперь нужно включить геопозицию на телефоне <strong>ребёнка</strong>. Для этого возьмите его телефон или попросите ребёнка выполнить эти действия.</p>
+            <div class="info-box info-box--yellow">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+              Для детских аккаунтов (до 13 лет) геолокация включается автоматически — шаги ниже не нужны.
+            </div>
+            <div class="path-steps">
+              <div class="path-step">
+                <div class="path-step__icon">⚙️</div>
+                <div><strong>Настройки</strong> на телефоне ребёнка</div>
+              </div>
+              <div class="path-arrow">↓</div>
+              <div class="path-step">
+                <div class="path-step__icon">👤</div>
+                <div>Нажмите на <strong>имя ребёнка / Apple ID</strong> вверху</div>
+              </div>
+              <div class="path-arrow">↓</div>
+              <div class="path-step">
+                <div class="path-step__icon">📍</div>
+                <div>Нажмите <strong>«Локатор»</strong> (Find My)</div>
+              </div>
+              <div class="path-arrow">↓</div>
+              <div class="path-step">
+                <div class="path-step__icon">🔛</div>
+                <div>Включите <strong>«Поделиться геопозицией»</strong> — ползунок станет зелёным</div>
+              </div>
+            </div>
+            <div class="info-box info-box--green">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              После включения ваш аккаунт автоматически начнёт получать геопозицию ребёнка.
+            </div>
+          </div>
+          <div class="step-visual">
+            <div class="ios-screen">
+              <div class="ios-screen__bar">
+                <span class="ios-back">‹ Apple ID</span>
+                <span class="ios-title">Локатор</span>
+              </div>
+              <div class="ios-section">
+                <div class="ios-row ios-row--header">ГЕОПОЗИЦИЯ</div>
+                <div class="ios-row">
+                  <div class="ios-row-text">
+                    <div class="ios-row-title">Поделиться геопозицией</div>
+                    <div class="ios-row-sub">Члены семьи видят вашу геопозицию</div>
+                  </div>
+                  <div class="ios-toggle ios-toggle--on"></div>
+                </div>
+                <div class="ios-row">
+                  <div class="ios-row-text">
+                    <div class="ios-row-title">Сеть локатора</div>
+                    <div class="ios-row-sub">Помогает находить устройство офлайн</div>
+                  </div>
+                  <div class="ios-toggle ios-toggle--on"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-block reveal" id="step3">
+        <div class="step-header">
+          <div class="step-num">3</div>
+          <div>
+            <div class="step-label">Шаг третий</div>
+            <h3 class="step-title">Открыть приложение «Локатор» на вашем телефоне</h3>
+          </div>
+        </div>
+        <div class="step-body">
+          <div class="step-text">
+            <p>Теперь берёте <strong>свой</strong> iPhone. Геопозиция ребёнка уже доступна вам — нужно только открыть нужное приложение.</p>
+            <div class="path-steps">
+              <div class="path-step">
+                <div class="path-step__icon">🔍</div>
+                <div>Найдите приложение <strong>«Локатор»</strong> (зелёная иконка с белой точкой на карте)<br/><span style="color:var(--text-muted);font-size:0.82rem">Или найдите через поиск: свайп вниз по экрану → «Локатор»</span></div>
+              </div>
+              <div class="path-arrow">↓</div>
+              <div class="path-step">
+                <div class="path-step__icon">👥</div>
+                <div>Нажмите вкладку <strong>«Люди»</strong> внизу экрана</div>
+              </div>
+              <div class="path-arrow">↓</div>
+              <div class="path-step">
+                <div class="path-step__icon">🧒</div>
+                <div>Вы увидите имя ребёнка в списке — нажмите на него</div>
+              </div>
+              <div class="path-arrow">↓</div>
+              <div class="path-step">
+                <div class="path-step__icon">🗺️</div>
+                <div>На карте появится точка с местоположением ребёнка в реальном времени</div>
+              </div>
+            </div>
+          </div>
+          <div class="step-visual">
+            <div class="ios-screen">
+              <div class="ios-screen__bar">
+                <span class="ios-title">Люди</span>
+                <span class="ios-action">+</span>
+              </div>
+              <div class="ios-section">
+                <div class="ios-row ios-row--header">МОЯ СЕМЬЯ</div>
+                <div class="ios-row ios-row--person">
+                  <div class="ios-avatar ios-avatar--child">А</div>
+                  <div class="ios-row-text">
+                    <div class="ios-row-title">Анна</div>
+                    <div class="ios-row-sub ios-row-sub--green">📍 ул. Ленина, 12 · Сейчас</div>
+                  </div>
+                  <div class="ios-chevron">›</div>
+                </div>
+                <div class="ios-row ios-row--person">
+                  <div class="ios-avatar ios-avatar--spouse">М</div>
+                  <div class="ios-row-text">
+                    <div class="ios-row-title">Михаил</div>
+                    <div class="ios-row-sub">📍 Дом · 12 мин назад</div>
+                  </div>
+                  <div class="ios-chevron">›</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 – Geofences -->
+      <div class="step-block reveal" id="step4">
+        <div class="step-header">
+          <div class="step-num">4</div>
+          <div>
+            <div class="step-label">Шаг четвёртый (бонус)</div>
+            <h3 class="step-title">Настроить геозоны — уведомления автоматически</h3>
+          </div>
+        </div>
+        <div class="step-body">
+          <div class="step-text">
+            <p>Геозоны — это умные уведомления. Телефон сам напишет вам: <em>«Анна пришла в школу»</em> или <em>«Анна ушла из дома»</em>. Не нужно каждый раз открывать Локатор и проверять вручную.</p>
+            <div class="path-steps">
+              <div class="path-step">
+                <div class="path-step__icon">👤</div>
+                <div>В приложении «Локатор» → <strong>нажмите на имя ребёнка</strong></div>
+              </div>
+              <div class="path-arrow">↓</div>
+              <div class="path-step">
+                <div class="path-step__icon">🔔</div>
+                <div>Прокрутите вниз → нажмите <strong>«Добавить уведомление»</strong></div>
+              </div>
+              <div class="path-arrow">↓</div>
+              <div class="path-step">
+                <div class="path-step__icon">📌</div>
+                <div>Выберите <strong>тип события:</strong></div>
+              </div>
+            </div>
+            <div class="geofence-options">
+              <div class="geofence-opt">
+                <div class="geofence-opt__icon">🏫</div>
+                <div>
+                  <div class="geofence-opt__title">Прибыл в место</div>
+                  <div class="geofence-opt__desc">Уведомление когда ребёнок пришёл в школу, к другу, на тренировку</div>
+                </div>
+              </div>
+              <div class="geofence-opt">
+                <div class="geofence-opt__icon">🏠</div>
+                <div>
+                  <div class="geofence-opt__title">Ушёл из места</div>
+                  <div class="geofence-opt__desc">Уведомление когда ребёнок вышел из дома или покинул школу</div>
+                </div>
+              </div>
+            </div>
+            <div class="path-steps" style="margin-top:16px">
+              <div class="path-step">
+                <div class="path-step__icon">🗺️</div>
+                <div>Введите название места (Дом, Школа, Бабушка) → система найдёт адрес</div>
+              </div>
+              <div class="path-arrow">↓</div>
+              <div class="path-step">
+                <div class="path-step__icon">✅</div>
+                <div>Нажмите <strong>«Добавить»</strong> — уведомления придут автоматически</div>
+              </div>
+            </div>
+          </div>
+          <div class="step-visual">
+            <div class="notification-demo">
+              <div class="notif">
+                <div class="notif__app">
+                  <div class="notif__icon">📍</div>
+                  <span>Локатор</span>
+                  <span class="notif__time">сейчас</span>
+                </div>
+                <div class="notif__title">Анна прибыла в Школу</div>
+                <div class="notif__body">Анна прибыла на ул. Садовая, 8</div>
+              </div>
+              <div class="notif notif--later">
+                <div class="notif__app">
+                  <div class="notif__icon">📍</div>
+                  <span>Локатор</span>
+                  <span class="notif__time">15:40</span>
+                </div>
+                <div class="notif__title">Анна покинула Школу</div>
+                <div class="notif__body">Анна ушла с ул. Садовая, 8</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 – iCloud web -->
+      <div class="step-block reveal" id="step5">
+        <div class="step-header">
+          <div class="step-num">5</div>
+          <div>
+            <div class="step-label">Дополнительно</div>
+            <h3 class="step-title">Смотреть с компьютера — через iCloud.com</h3>
+          </div>
+        </div>
+        <div class="step-body step-body--single">
+          <p>Геолокацию ребёнка можно видеть не только с телефона, но и с любого компьютера или планшета:</p>
+          <div class="web-steps">
+            <div class="web-step">
+              <div class="web-step__num">1</div>
+              <div>Откройте браузер (Chrome, Safari, Firefox) и перейдите на <strong>icloud.com</strong></div>
+            </div>
+            <div class="web-step">
+              <div class="web-step__num">2</div>
+              <div>Войдите под своим <strong>Apple ID</strong> (почта + пароль)</div>
+            </div>
+            <div class="web-step">
+              <div class="web-step__num">3</div>
+              <div>Нажмите иконку <strong>«Локатор»</strong> (зелёная с точкой)</div>
+            </div>
+            <div class="web-step">
+              <div class="web-step__num">4</div>
+              <div>Слева в списке выберите имя ребёнка — на карте появится его местоположение</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <section class="faq reveal">
+        <h2 class="faq__title">Частые вопросы</h2>
+        <div class="faq__grid">
+          <div class="faq-item">
+            <div class="faq-q">
+              <span class="faq-q__icon">❓</span>
+              Ребёнок увидит, что за ним следят?
+            </div>
+            <p class="faq-a">Да — на устройстве ребёнка в статусной строке будет показываться значок геолокации 📍. Это сделано специально Apple для прозрачности. Рекомендуем заранее поговорить с ребёнком об этом.</p>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              <span class="faq-q__icon">🔋</span>
+              Сильно ли расходуется батарея?
+            </div>
+            <p class="faq-a">Практически нет — Apple оптимизировала Find My так, что он обновляет позицию редко (раз в несколько минут), а не постоянно. Расход минимальный.</p>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              <span class="faq-q__icon">✈️</span>
+              Телефон в авиарежиме — вижу ли геопозицию?
+            </div>
+            <p class="faq-a">Отображается последнее известное местоположение с меткой времени. Если телефон был в сети — вы увидите, где он был. При включении интернета позиция обновится.</p>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              <span class="faq-q__icon">📵</span>
+              Телефон выключили или разрядился?
+            </div>
+            <p class="faq-a">iPhone за несколько часов до разрядки отправляет последнее местоположение в iCloud. Также работает «Сеть локатора» — другие устройства Apple анонимно фиксируют сигнал Bluetooth и передают примерное местоположение.</p>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              <span class="faq-q__icon">👶</span>
+              Ребёнок может сам отключить геолокацию?
+            </div>
+            <p class="faq-a">Для детских аккаунтов (до 13 лет) отключение геолокации требует вашего разрешения — организатор Family Sharing получит запрос. Для подростков (13–17) — могут отключить, вы получите уведомление.</p>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              <span class="faq-q__icon">📱</span>
+              У ребёнка Android — что делать?
+            </div>
+            <p class="faq-a">Find My работает только между устройствами Apple. Для Android используйте Google Family Link (аналог от Google) — принцип тот же, но через Google аккаунт. Инструкция аналогична.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Summary -->
+      <div class="summary-card reveal">
+        <div class="summary-card__icon">🎉</div>
+        <h3>Готово! Теперь вы всегда знаете где ребёнок</h3>
+        <p>Настройка работает постоянно и не требует повторных действий. Геопозиция обновляется автоматически, геозоны пришлют уведомления сами.</p>
+        <div class="summary-steps">
+          <div class="s-step s-step--done">✓ Семейный доступ настроен</div>
+          <div class="s-step s-step--done">✓ Геопозиция включена</div>
+          <div class="s-step s-step--done">✓ Локатор показывает местоположение</div>
+          <div class="s-step s-step--done">✓ Геозоны уведомляют автоматически</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="guide-footer">
+    <div class="container">
+      <p>Инструкция актуальна для iOS 16–18 &nbsp;·&nbsp; Составлено <a href="index.html">Alex Devlin</a> &nbsp;·&nbsp; <span id="year"></span></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }});
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
